@@ -3,15 +3,13 @@
 int main()
 {
   
-  const int KEY = 15; // cipher key is equal to 15, written as KEY to show const
-  char message[25];
+  const int KEY = 9; // cipher key is equal to 15, written as KEY to show const
+  char message[] = "encrypt"; // this is the string that will be encrypted and later decrypted
+ 
+    printf("Cipher key is equal to %d\n", KEY); // print cipher key is equal to 15
   
-  printf("Cipher key is equal to %d\n", KEY); // print cipher key is equal to 15
+    printf("Message to encrypt is: %s\n", message); // print message before encryption to show user
+    
 
-  scanf("%s", message); // take user input as message to be encrypted
-  
-  printf("Message to encrypt is: %s\n", message); // print message before encryption
-
-
-  return 0;
+return 0;
 }
