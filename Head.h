@@ -162,10 +162,7 @@ void SubEncrypt(char* message, char* SubKEY){
                 default :
                         break;
             }  
-       }
-
-    
-   
+       }  
 }
 
 void SubDecrypt(char* message, char* SDKEY){
@@ -261,9 +258,6 @@ void SubDecrypt(char* message, char* SDKEY){
                         break;
             }  
        }
-
-    
-   
 }
 
 #endif

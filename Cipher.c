@@ -157,39 +157,6 @@ int main(){
                 break;
            
    }
-    
-    
-    
-    
-    
-
-
-    
-    
-    //RotEncrypt(message, KEY);
-    
-    //printf("Message is : %s\n", message);
-    
-    /*SubEncrypt(message, SubKEY);
-    
-    printf("Encrypted message via substitution is : %s\n", message);
-    
-    SubDecrypt(message, SDKEY);
-    
-    printf("Decrypted message is : %s\n", message);
-    
-    
-    
-    RotEncrypt(message, KEY);
-   
-    printf("Message to decrypt is : %s\n", message);
-    
-    RotDecrypt(message, KEY);
-    
-    printf("Decrypted message is : %s\n", message);
-    
-   // printf("Frequency string : %s\n", freq);*/
      
     return 0;
-
 }
