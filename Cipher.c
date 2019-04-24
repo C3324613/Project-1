@@ -1,40 +1,46 @@
 #include<stdio.h>
 #include"Head.h"
 
-void RotEncrypt(char* message, int KEY);
-void RotDecrypt(char* message, int KEY);
-char RotAttack(int index, char* message, char* freq, int KEY);
+void RotEncrypt(char* message, int KEY);// function prototype for Rotational encryption cipher
+void RotDecrypt(char* message, int KEY);// function prototype for Rotatioanl decryption cipher
+char RotAttack(int index, char* message, char* freq, int KEY);// function prototype for 
 void SubEncrypt(char* message, char* SubKEY);
 void SubDecrypt(char* message, char* SDKEY);
 
 int main(){
     
-    int choice = 0;
-    int index = 0; 
+    int Repeat = 0;// variable used to determine if program will repeat
+    int choice = 0;// used to select users choice
+    int index = 0; // used to
     int i = 0;
     int counter = 0;
     int n = 65;
-    int KEY = 14;// key for rotation cipher
+    int KEY = 0;// key for rotation cipher
     //char freq[26];
     char k[] =      "11111111111111111111111111"; // key string for rotational cipher, only used to display info to user
-    char a[] =      "ABCDEFGHIJKLMNOPQRSTUVWXYZ";// used to generate the decrytpion string 'SDKEY' for substitution
-    char SubKEY[] = "11111111111111111111111111";// substitution cipher encryption key
-    char SDKEY[] =  "11111111111111111111111111";// placeholder for auto generated substitution decryption key
-    char message[1024];// string that will store message that will be encrypted/ decrypted
-
-   printf("Please enter any message you would like to use throughout the program...\n\n");// prompts the user to enter a message they would like to decrypt
-   scanf("%[^\n]s", message); // takes the users input via stdin/out and stores it in the string 'message'
+    char a[] =      "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // used to generate the decrytpion string 'SDKEY' for substitution
+    char SubKEY[] = "11111111111111111111111111"; // substitution cipher encryption key
+    char SDKEY[] =  "11111111111111111111111111"; // placeholder for auto generated substitution decryption key
+    char message[1024]; // string that will store message that will be encrypted/ decrypted
    
-   for(index = 0; message[index] != 0; index++){
+             
+    printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
+    scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
+   
+    for(index = 0; message[index] != 0; index++){
        
-       if(message[index] >= 97 && message[index] <= 122){
+        if(message[index] >= 97 && message[index] <= 122){
            
-           message[index] -= 32;
-       }
-       
+            message[index] -= 32;
+        } 
     } /*the above code checks for lowercase letters and changes them to uppercase
         It does this by checking for ASCII values that match lowercase characters
         and then minusing 32 from to convert to uppercase */
+       
+    MenuRepeat:{
+        
+        //do nothing
+    }
    
     printf("You entered : %s\n\n", message);// prints the users message to the terminal (will appear capitalised always)
     printf("Choose a ciphering method by entering a number from the options below...\n\n");
@@ -45,7 +51,13 @@ int main(){
     printf("[3] Substitution cipher encryption\n\n");
     printf("[4] Substitution cipher decryption with key\n\n");
    
+    Invalid:{
+        
+        //do nothing
+    }  
+    
     scanf("%d", &choice);
+    
    
     switch(choice){
        
@@ -53,6 +65,8 @@ int main(){
                 printf("Please enter a KEY to encrypt with between 0 and 26...\n\n");
                 scanf("%d", &KEY);
                 
+                KEY = KEY % 26;
+                    
                 for (index = 0; a[index] !=0; index++){
     
                     k[index] = ((a[index] - 65 + KEY) % 26) + 65;
@@ -68,6 +82,7 @@ int main(){
                 printf("Encrypted message is       : %s\n", message);
             
                 break;
+                
         case 2: printf("You chose Rotational cipher decryption with a known key\n\n");
                 printf("Please enter a KEY to decrypt with between 0 and 26...\n\n");
                 scanf("%d", &KEY);
@@ -87,9 +102,18 @@ int main(){
                 printf("decrypted message is       : %s\n", message);
                 
                 break;
+                
         case 3: printf("You chose Substitution cipher encryption\n\n");
                 printf("Please assign each letter of the alphabet a new letter starting from A-Z\n\n");
                 scanf("%s", SubKEY);
+                
+                for(index = 0; SubKEY[index] != 0; index++){
+       
+                    if(SubKEY[index] >= 97 && SubKEY[index] <= 122){
+           
+                    SubKEY[index] -= 32;
+                    }
+                }
                 
                 while( counter <= 26){
 			
@@ -98,14 +122,14 @@ int main(){
 	                   if ((SubKEY[index]) == n){
 					
 					       SDKEY[i] = a[index];	
-		              }	
+		               }	
 			
 	               }
 			
-		          counter++;
-                  n++;
-		          i++;
-		          index = 0;
+		           counter++;
+                   n++;
+		           i++;
+		           index = 0;
                 }
                 
                 printf("--%s--\n", a);
@@ -118,11 +142,20 @@ int main(){
                 printf("encrypted message is       : %s\n", message);
                 
                 break;
+                
         case 4: printf("You chose Substitution cipher decryption with a known key\n\n");
                 printf("Please enter the string of letters/ KEY used to encrypt the message you want to decrypt\n\n");
                 printf("The program will auto-generate a decryption key based on your encryption key\n\n");
                 scanf("%s", SubKEY);
                 printf("Generating...\n\n");
+                
+                for(index = 0; SubKEY[index] != 0; index++){
+       
+                    if(SubKEY[index] >= 97 && SubKEY[index] <= 122){
+           
+                       SubKEY[index] -= 32;
+                    }
+                }
                 
                 while( counter <= 26){
 			
@@ -153,10 +186,28 @@ int main(){
                 printf("Decrypted message is       : %s\n", message);
                 
                 break;
-        default: printf("INVALID CHOICE");
-                break;
+                
+        default: printf("INVALID CHOICE...PLEASE TRY AGAIN...\n\n");
+        
+                goto Invalid;
            
    }
-     
+   
+    printf("Enter 1 if you would like to continue...or any other number to exit...\n\n");
+    
+    scanf("%d", &Repeat);
+    
+    
+    if(Repeat == 1){
+        
+        goto MenuRepeat;
+        
+    }
+    
+    
+    printf("END OF PROGRAM\n");
     return 0;
+      
 }
+ 
+     
