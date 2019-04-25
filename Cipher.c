@@ -194,7 +194,7 @@ int main(){
                 break;
                 
         case 5: 
-                goto NewMessage;
+                printf("test\n");
                 break;
                 
         default: printf("INVALID CHOICE...PLEASE TRY AGAIN...\n\n");
