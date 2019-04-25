@@ -23,7 +23,6 @@ int main(){
     char SDKEY[] =  "11111111111111111111111111"; // placeholder for auto generated substitution decryption key
     char message[1024]; // string that will store message that will be encrypted/ decrypted
    
-             
     printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
     scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
    
