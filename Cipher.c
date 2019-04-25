@@ -23,6 +23,12 @@ int main(){
     char SDKEY[] =  "11111111111111111111111111"; // placeholder for auto generated substitution decryption key
     char message[1024]; // string that will store message that will be encrypted/ decrypted
    
+    
+    NewMessage:{
+        
+        // do nothing
+    }
+    
     printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
     scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
    
@@ -49,6 +55,7 @@ int main(){
     printf("[2] Rotational cipher decryption with key\n\n");
     printf("[3] Substitution cipher encryption\n\n");
     printf("[4] Substitution cipher decryption with key\n\n");
+    printf("[5] Enter a new Message\n\n");
    
     Invalid:{
         
@@ -184,6 +191,10 @@ int main(){
                 SubDecrypt(message, SDKEY);
                 printf("Decrypted message is       : %s\n", message);
                 
+                break;
+                
+        case 5: 
+                goto NewMessage;
                 break;
                 
         default: printf("INVALID CHOICE...PLEASE TRY AGAIN...\n\n");
