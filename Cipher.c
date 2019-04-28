@@ -12,7 +12,7 @@
  *  is inputted the program will break. 
  *  after the encryption/ decryption has been performed the user will be met with a second menu, where they
  *  they can continue or exit the program. If they choose to continue the previous message will still be stored
- *  in the string 'message'.
+ *  in the string 'message'. 
  */
 
 void RotEncrypt(char* message, int KEY);// function prototype for Rotational encryption cipher
