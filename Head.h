@@ -1,13 +1,20 @@
 #ifndef VARIABLE
 #define VARIABLE
 
-void RotEncrypt(char* message, const int KEY){
+
+/* Inputs: user's message in the string 'message[1024]', the key which is entererd by the user through scanf and stored in the variable 'KEY'
+ * Return Value: This function returns no data type and so is void. The function alters the string message within the function
+ * What it does: The function 'RotEncrypt', encrypts the users message using the rotational encryption method
+ * Limitations: limited to a message of length 1024 characaters
+ */
+
+void RotEncrypt(char* message, int KEY){
     
-    int index = 0;
+    int index = 0; // initialises the variable index and sets it to 0
     
-    for(index = 0; message[index] != 0; index++) { // takes each char in the string 'message' and assigns it a new ASCII value
+    for(index = 0; message[index] != 0; index++) { // cycles through each string element of the string 'message' until the end of the message is reached
         
-        if((message[index] > 64 && message[index] < 91 )){  //checks for ASCII values which are not letters. i.e punctuation characters, etc.   x x 
+        if((message[index] > 64 && message[index] < 91 )){  //checks for ASCII values which are not letters. i.e punctuation characters, etc. 
             
             message[index] = (((message[index] - 65) + KEY) % 26) + 65;  
             /* sets each letter in message to an ASCII value between 0-25 by minusing 65 as a = 65
@@ -21,18 +28,24 @@ void RotEncrypt(char* message, const int KEY){
     
 }
 
-void RotDecrypt(char* message, const int KEY){
+/* Inputs: user's message in the string 'message[1024]', the key which is entererd by the user through scanf and stored in the variable 'KEY'.
+ * Return Value: This function returns no data type and so is void. The function alters the string message within the function
+ * What it does: The function 'RotDecrypt', decrypts the users message using the rotational decryption method
+ * Limitations: limited to a message of length 1024 characaters
+ */
+
+void RotDecrypt(char* message, int KEY){
     
-    int index = 0;
+    int index = 0;// initialises the variable index and sets it to 0
     
-    for(index = 0; message[index] != 0; index++) { // cycles through each character in the string message
+    for(index = 0; message[index] != 0; index++) { // cycles through each character/ string element in the string 'message'
         
-        if((message[index] > 64 && message[index] < 91)){  //checks for ASCII values which are not letters
+        if((message[index] > 64 && message[index] < 91)){  //checks for ASCII values which are not letters. i.e punctuation characters, etc.
             
             message[index] = (((message[index] - 65) - KEY + 26) % 26) + 65;  
             /*  modulus of negative values doesn't behave properly in che
                 by adding 26 to the result the correct modulus can be calculated
-                Otherwise operates the same an encryption formula except the KEY value is minused
+                Otherwise operates the same the encryption formula except the KEY value is minused
             */
         } 
            
@@ -70,19 +83,25 @@ char RotAttack(int index, char* message,char* freq, const int KEY){
     return freq[freqindex];
 }
 
+/* Inputs: user's message in the string 'message[1024]', the key which is entererd by the user through scanf into the string 'SubKEY'.
+ * Return Value: This function returns no data type and so is void. The function alters the string message within the function
+ * What it does: The function 'SubEncrypt', encrypts the users message using the substitution encryption method
+ * Limitations: limited to a message of length 1024 characaters
+ */
+
 void SubEncrypt(char* message, char* SubKEY){
     
-    int n;
-    int index = 0;
+    int n;// initialises the variable n 
+    int index = 0;// initialises the vairable index and sets it to 0
     
-        for(index = 0; message[index] != 0; index++){
+        for(index = 0; message[index] != 0; index++){// FOR loop that cycles through the string elements in the string 'message'
         
-            n = message[index];
+            n = message[index];// sets n to be equal to the value of message at the current index
         
-            switch(n){
+            switch(n){// switch case statement for the value of n, corresponding to the current message[index]/ ASCII value
             
-                case 65 : 
-                        message[index] = SubKEY[0];
+                case 65 : // switch case, where 65 corresponds to the decimal value for the ASCII character 'A'
+                        message[index] = SubKEY[0];// sets the current value of message at index to be equal to SubKEY, where index = 0
                         break;
                 case 66 :
                         message[index] = SubKEY[1];
@@ -159,25 +178,31 @@ void SubEncrypt(char* message, char* SubKEY){
                 case 90 : 
                         message[index] = SubKEY[25];
                         break;     
-                default :
+                default :// if any ASCII value doesn't fall into the above cases (i.e. special characters, numbers, etc.) they will be ignored
                         break;
             }  
        }  
 }
 
+/* Inputs: user's message in the string 'message[1024]', the key which is generated by the user's input into SubKEY through scanf and stored in SDKEY
+ * Return Value: This function returns no data type and so is void. The function alters the string message within the function
+ * What it does: The function 'SubEncrypt', decrypts the users message using the rotational decryption method
+ * Limitations: limited to a message of length 1024 characaters
+ */
+
 void SubDecrypt(char* message, char* SDKEY){
     
-    int n;
-    int index = 0;
+    int n;// initialises the variable 'n'
+    int index = 0;// initialises the variable index and sets it to 0
     
-        for(index = 0; message[index] != 0; index++){
+        for(index = 0; message[index] != 0; index++){// FOR loop which cycles through the string 'message'
         
-            n = message[index];
+            n = message[index];// sets n to be equal tothe value of 'message' at the current index
         
-            switch(n){
+            switch(n){// switch case statement 
             
-                case 65 : 
-                        message[index] = SDKEY[0];
+                case 65 : //switch case, when the n is equal to 65 (ASCII value for 'A'), the code beneath will execute
+                        message[index] = SDKEY[0];//sets 'message' at the current index to be equal to 'SDKEY' at index equals 0
                         break;
                 case 66 :
                         message[index] = SDKEY[1];
@@ -254,7 +279,7 @@ void SubDecrypt(char* message, char* SDKEY){
                 case 90 : 
                         message[index] = SDKEY[25];
                         break;     
-                default :
+                default : // if any ASCII value doesn't fall into the above cases (i.e. special characters, numbers, etc.) they will be ignored
                         break;
             }  
        }
