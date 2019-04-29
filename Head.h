@@ -72,7 +72,7 @@ void RotAttack(char* message){
     
     for(index = 0; message[index] != 0; index++){
         
-        index1 = index ++;
+        index1 = index++;
         index2 = index + 2;
         printf("test2\n\n");
         
