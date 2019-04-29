@@ -62,7 +62,7 @@ void RotDecrypt(char* message, int KEY){
 void RotAttack(char* message){
     
     int KEY = 0;
-    int index = 0, index1 = 0, index2 = 0;
+    int index = 0, index1 = 1, index2 = 2;
     //char messageCheck[1024];
     
     for(index = 0; message[index] != 0; index ++){
@@ -82,7 +82,6 @@ void RotAttack(char* message){
             
             printf("test\n\n");
             printf("key is : %d\n\n", KEY);
-            
             goto KEYFound;          
         }
     }
