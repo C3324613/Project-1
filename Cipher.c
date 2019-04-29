@@ -196,7 +196,7 @@ int main(){
                 break;
                 
         case 5: 
-                goto NewMessage;// code jumps to the label 'NewMesage' as per the user's selection
+                goto NewMessage;// code jumps to the label 'NewMessage' as per the user's selection
                 break;
                 
                 
