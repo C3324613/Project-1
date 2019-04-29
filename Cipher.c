@@ -38,7 +38,7 @@ int main(){
     char message[1024]; // string that will store message that will be encrypted/ decrypted
 
     printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
-    scanf("%s", message);// takes the users input via stdin/out and stores it in the string 'message'
+    scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
    
     for(index = 0; message[index] != 0; index++){
        
@@ -196,6 +196,7 @@ int main(){
    }
    
     printf("[1] Go back to Menu\n\n");// the following is an exit menu which is displayed to the user
+    printf("[2] Enter a new message\n\n");
     printf("[0] Exit the program\n\n");
     
     scanf("%d", &Repeat);// takes user's input from stdin and stores it int he variable 'Repeat'
@@ -207,7 +208,14 @@ int main(){
         
     }
     
-    else{// if the above condition is not met the following code executes
+    else if(Repeat == 2){
+        
+        printf("Enter a new message...\n\n");
+        
+        scanf("%[^\n]s", message);
+    }
+    
+    else {// if the above condition is not met the following code executes
         
        printf("END OF PROGRAM\n"); // prints an exit message for the user
     }
