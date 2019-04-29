@@ -17,7 +17,6 @@
 
 void RotEncrypt(char* message, int KEY);// function prototype for Rotational encryption cipher
 void RotDecrypt(char* message, int KEY);// function prototype for Rotatioanl decryption cipher
-void RotAttack(char* message);// function prototype for Rotational cipher attack
 void SubEncrypt(char* message, char* SubKEY);// function prototype for Substitution encryption cipher
 void SubDecrypt(char* message, char* SDKEY);// function prototype for Substitution decryption cipher
 
@@ -67,8 +66,7 @@ int main(){
     printf("[2] Rotational cipher decryption with key\n\n");
     printf("[3] Substitution cipher encryption\n\n");
     printf("[4] Substitution cipher decryption with key\n\n");
-    printf("[5] Rotational Cipher Attack\n\n");
-    printf("[6] Enter a new message\n\n");
+    printf("[5] Enter a new message\n\n");
    
     Invalid:{
         
@@ -195,18 +193,10 @@ int main(){
                 
                 break;
                 
-        case 5: printf("You chose Rotational Cipher Attack\n\n");
-                RotAttack(message);
-                printf("Message is: %s\n\n", message);
+        case 5: goto NewMessage;// code jumps to the label 'NewMessage' as per the user's selection
                 
                 break;
-                   
-        case 6:
-                goto NewMessage;// code jumps to the label 'NewMessage' as per the user's selection
-                
-                break;
-                
-                
+                 
         default: printf("INVALID CHOICE...PLEASE TRY AGAIN...\n\n");// prints an error message to the user
         
                 goto Invalid;// tells the compiler to jump up to the label 'Invalid'

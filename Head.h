@@ -52,60 +52,6 @@ void RotDecrypt(char* message, int KEY){
     }
     
 }
-/*
- * 
- * 
- * 
- * 
- */
-
-void RotAttack(char* message){
-    
-    int KEY = 0;
-    int index = 0, index1 = 1, index2 = 2;
-    //char messageCheck[1024];
-    
-    for(index = 0; message[index] != 0; index ++){
-         
-         //messageCheck[index] = message[index];
-    }
-    
-    for(index = 0; message[index] != 0; index++){
-        
-        index1 = index++;
-        index2 = index + 2;
-        printf("test2\n\n");
-        
-        if(message[index] == 32 && message[index2] == 32){
-            
-            KEY = message[index1] - 65;
-            
-            printf("test\n\n");
-            printf("key is : %d\n\n", KEY);
-            goto KEYFound;          
-        }
-    }
-    
-    KEYFound:{
-        
-        //do nothing
-    }
-    
-    for(index = 0; message[index] != 0; index++) { // cycles through each character/ string element in the string 'message'
-        
-        if((message[index] > 64 && message[index] < 91)){  //checks for ASCII values which are not letters. i.e punctuation characters, etc.
-            
-            message[index] = (((message[index] - 65) - KEY + 26) % 26) + 65;  
-            /*  modulus of negative values doesn't behave properly in che
-                by adding 26 to the result the correct modulus can be calculated
-                Otherwise operates the same the encryption formula except the KEY value is minused
-            */
-        } 
-           
-    }
-    
-    
-}
 
 /* Inputs: user's message in the string 'message[1024]', the key which is entererd by the user through scanf into the string 'SubKEY'.
  * Return Value: This function returns no data type and so is void. The function alters the string message within the function
