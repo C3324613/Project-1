@@ -11,7 +11,7 @@
  *  an error message and a new number can easily be inputted. However, if a letter or any special character 
  *  is inputted the program will break. 
  *  after the encryption/ decryption has been performed the user will be met with a second menu, where they
- *  they can continue or exit the program. If they choose to continue the previous message will still be stored
+ *  they can continue, enter a new message or exit the program. If they choose to continue the previous message will still be stored
  *  in the string 'message'. 
  */
 
