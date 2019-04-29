@@ -18,8 +18,8 @@
 void RotEncrypt(char* message, int KEY);// function prototype for Rotational encryption cipher
 void RotDecrypt(char* message, int KEY);// function prototype for Rotatioanl decryption cipher
 char RotAttack(int index, char* message, char* freq, int KEY);// function prototype for 
-void SubEncrypt(char* message, char* SubKEY);
-void SubDecrypt(char* message, char* SDKEY);
+void SubEncrypt(char* message, char* SubKEY);// function prototype for Substitution encryption cipher
+void SubDecrypt(char* message, char* SDKEY);// function prototype for Substitution decryption cipher
 
 int main(){
     
@@ -31,14 +31,14 @@ int main(){
     int n = 65; // This variable is also used to generate the decryption key for sub cipher
     int KEY = 0;// key for rotation cipher, changes tih user input
     //char freq[26];
-    char ROTKEY[] =      "11111111111111111111111111"; // key string for rotational cipher, only used to display info to user
-    char ALPHABET[] =      "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // used to generate the decrytpion string 'SDKEY' for substitution
+    char ROTKEY[] = "11111111111111111111111111"; // key string for rotational cipher, only used to display info to user
+    char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // used to generate the decrytpion string 'SDKEY' for substitution
     char SubKEY[] = "11111111111111111111111111"; // substitution cipher encryption key placeholder
     char SDKEY[] =  "11111111111111111111111111"; // placeholder for auto generated substitution decryption key
     char message[1024]; // string that will store message that will be encrypted/ decrypted
 
     printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
-    scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
+    scanf("%s", message);// takes the users input via stdin/out and stores it in the string 'message'
    
     for(index = 0; message[index] != 0; index++){
        
