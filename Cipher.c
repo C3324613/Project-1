@@ -17,7 +17,7 @@
 
 void RotEncrypt(char* message, int KEY);// function prototype for Rotational encryption cipher
 void RotDecrypt(char* message, int KEY);// function prototype for Rotatioanl decryption cipher
-char RotAttack(int index, char* message, char* freq, int KEY);// function prototype for 
+void RotAttack(char* message);// function prototype for Rotational cipher attack
 void SubEncrypt(char* message, char* SubKEY);// function prototype for Substitution encryption cipher
 void SubDecrypt(char* message, char* SDKEY);// function prototype for Substitution decryption cipher
 
@@ -30,7 +30,6 @@ int main(){
     int counter = 0; // a counter variable used to generate the decryption key for sub cipher
     int n = 65; // This variable is also used to generate the decryption key for sub cipher
     int KEY = 0;// key for rotation cipher, changes tih user input
-    //char freq[26];
     char ROTKEY[] = "11111111111111111111111111"; // key string for rotational cipher, only used to display info to user
     char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // used to generate the decrytpion string 'SDKEY' for substitution
     char SubKEY[] = "11111111111111111111111111"; // substitution cipher encryption key placeholder
@@ -68,7 +67,8 @@ int main(){
     printf("[2] Rotational cipher decryption with key\n\n");
     printf("[3] Substitution cipher encryption\n\n");
     printf("[4] Substitution cipher decryption with key\n\n");
-    printf("[5] Enter a new message\n\n");
+    printf("[5] Rotational Cipher Attack\n\n");
+    printf("[6] Enter a new message\n\n");
    
     Invalid:{
         
@@ -195,8 +195,15 @@ int main(){
                 
                 break;
                 
-        case 5: 
+        case 5: printf("You chose Rotational Cipher Attack\n\n");
+                RotAttack(message);
+                printf("Message is: %s", message);
+                
+                break;
+                   
+        case 6:
                 goto NewMessage;// code jumps to the label 'NewMessage' as per the user's selection
+                
                 break;
                 
                 
