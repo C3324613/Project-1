@@ -37,8 +37,13 @@ int main(){
     char SDKEY[] =  "11111111111111111111111111"; // placeholder for auto generated substitution decryption key
     char message[1024]; // string that will store message that will be encrypted/ decrypted
 
+    NewMessage:{
+        
+        //do nothing
+    }
+    
     printf("Please enter any message you would like to use...\n\n");// prompts the user to enter a message they would like to decrypt
-    scanf("%[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
+    scanf(" %[^\n]s", message);// takes the users input via stdin/out and stores it in the string 'message'
    
     for(index = 0; message[index] != 0; index++){
        
@@ -63,6 +68,7 @@ int main(){
     printf("[2] Rotational cipher decryption with key\n\n");
     printf("[3] Substitution cipher encryption\n\n");
     printf("[4] Substitution cipher decryption with key\n\n");
+    printf("[5] Enter a new message\n\n");
    
     Invalid:{
         
@@ -189,6 +195,11 @@ int main(){
                 
                 break;
                 
+        case 5: 
+                goto NewMessage;// code jumps to the label 'NewMesage' as per the user's selection
+                break;
+                
+                
         default: printf("INVALID CHOICE...PLEASE TRY AGAIN...\n\n");// prints an error message to the user
         
                 goto Invalid;// tells the compiler to jump up to the label 'Invalid'
@@ -210,9 +221,7 @@ int main(){
     
     else if(Repeat == 2){
         
-        printf("Enter a new message...\n\n");
-        
-        scanf("%[^\n]s", message);
+        goto NewMessage;// code jumps to the label NewMessage as per the user's selection
     }
     
     else {// if the above condition is not met the following code executes
