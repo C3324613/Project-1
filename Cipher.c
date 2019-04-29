@@ -197,7 +197,7 @@ int main(){
                 
         case 5: printf("You chose Rotational Cipher Attack\n\n");
                 RotAttack(message);
-                printf("Message is: %s", message);
+                printf("Message is: %s\n\n", message);
                 
                 break;
                    

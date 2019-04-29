@@ -74,12 +74,22 @@ void RotAttack(char* message){
         
         index1 = index ++;
         index2 = index + 2;
+        printf("test2\n\n");
         
         if(message[index] == 32 && message[index2] == 32){
             
             KEY = message[index1] - 65;
-                    
+            
+            printf("test\n\n");
+            printf("key is : %d\n\n", KEY);
+            
+            goto KEYFound;          
         }
+    }
+    
+    KEYFound:{
+        
+        //do nothing
     }
     
     for(index = 0; message[index] != 0; index++) { // cycles through each character/ string element in the string 'message'
